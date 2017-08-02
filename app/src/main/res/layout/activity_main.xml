@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.darrenblunk.calculator.MainActivity">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine"
+        app:srcCompat="@drawable/calc_background" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <ImageView
+            android:id="@+id/Display"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@color/colorPrimaryDark" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:alpha=".7"
+            android:autoText="false"
+            android:fadingEdge="none"
+            android:fontFamily="monospace"
+            android:freezesText="false"
+            android:gravity="end"
+            android:inputType="none"
+            android:isScrollContainer="false"
+            android:maxLines="1"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scrollbars="horizontal"
+            android:singleLine="false"
+            android:text="0"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/background_light"
+            android:textIsSelectable="true"
+            app:autoSizeMaxTextSize="80sp"
+            app:autoSizeMinTextSize="41sp"
+            app:autoSizeTextType="uniform">
+
+        </android.support.v7.widget.AppCompatTextView>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/TextOutput"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="monospace"
+            android:freezesText="false"
+            android:gravity="end"
+            android:inputType="none"
+            android:isScrollContainer="false"
+            android:maxLines="1"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scrollbars="horizontal"
+            android:singleLine="false"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/background_light"
+            android:textIsSelectable="true"
+            app:autoSizeMaxTextSize="80sp"
+            app:autoSizeMinTextSize="41sp"
+            app:autoSizeTextType="uniform">
+
+        </android.support.v7.widget.AppCompatTextView>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:color/background_light"
+        android:id="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView14"
+        app:layout_constraintBottom_toTopOf="@+id/imageView18" />
+
+    <ImageView
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:color/background_light"
+        app:layout_constraintEnd_toStartOf="@+id/imageView13"
+        android:id="@+id/imageView14"
+        app:layout_constraintStart_toEndOf="@+id/imageView12"
+        />
+
+    <ImageView
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        android:id="@+id/imageView13"
+        app:layout_constraintStart_toEndOf="@+id/imageView14"
+         />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:color/background_light"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintBottom_toTopOf="@+id/imageView16"
+         />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/imageView17"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="0dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/imageView18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:color/background_light"
+        app:layout_constraintTop_toBottomOf="@+id/imageView16"
+        />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:alpha="0.3"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:color/background_light"
+        app:layout_constraintTop_toBottomOf="@+id/imageView17"
+        />
+
+    <GridLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:rowOrderPreserved="true"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintLeft_toLeftOf="@+id/background"
+        app:layout_constraintRight_toRightOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="250dp"
+        android:id="@+id/gridLayout">
+
+        <ImageView
+            android:id="@+id/BtClrSrn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:adjustViewBounds="false"
+            android:clickable="false"
+            android:cropToPadding="true"
+            android:foreground="@drawable/del"
+            android:foregroundGravity="center"
+            android:tag="c"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/back"
+            android:foregroundGravity="center"
+            android:tag="d"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/percentage"
+            android:foregroundGravity="center"
+            android:tag="%"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtDivide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/divide"
+            android:foregroundGravity="center"
+            android:tag="/"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtSeven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/seven"
+            android:foregroundGravity="center"
+            android:tag="7"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtEight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/eight"
+            android:foregroundGravity="center"
+            android:tag="8"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtNine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/nine"
+            android:foregroundGravity="center"
+            android:tag="9"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtMultiple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/multiple"
+            android:foregroundGravity="center"
+            android:tag="*"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/four"
+            android:foregroundGravity="center"
+            android:tag="4"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/five"
+            android:foregroundGravity="center"
+            android:tag="5"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtSix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/six"
+            android:foregroundGravity="center"
+            android:tag="6"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/minus"
+            android:foregroundGravity="center"
+            android:tag="-"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/one"
+            android:foregroundGravity="center"
+            android:tag="1"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/two"
+            android:foregroundGravity="center"
+            android:tag="2"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/three"
+            android:foregroundGravity="center"
+            android:tag="3"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/plus"
+            android:foregroundGravity="center"
+            android:tag="+"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtZero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/zero"
+            android:foregroundGravity="center"
+            android:scaleType="center"
+            android:tag="0"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/point"
+            android:foregroundGravity="center"
+            android:tag="."
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/BtEquals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:clickable="false"
+            android:foreground="@drawable/equals"
+            android:foregroundGravity="center"
+            android:tag="="
+            android:visibility="visible" />
+    </GridLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+</android.support.constraint.ConstraintLayout>
