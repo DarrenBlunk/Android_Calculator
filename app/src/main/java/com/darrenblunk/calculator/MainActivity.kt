@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     fun searchPoint() : Boolean {
         for(index in displaySum.reversed()) {
         when(index) {
-            '+','-','/','*','%' ->return true
+            '+','-','/','x','%' ->return true
             '.' -> return false
             }
         }
@@ -108,6 +108,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 '=' -> {
                     //Code goes here
+                    displaySum = outputText.text.toString()
                 }
                 'd' -> { //Deletes the last character in the string
                     displaySum = displaySum.dropLast(1)
@@ -120,7 +121,7 @@ class MainActivity : AppCompatActivity() {
                     displaySum+= tag.toString()[0]
 
                 }
-                '*','+','/','%' ->{  //Returns Operators
+                'x','+','/','%' ->{  //Returns Operators
                     if(displaySum.isNotEmpty()) {
                         if (displaySum[displaySum.lastIndex] == '-') {
                             displaySum = displaySum.dropLast(1)
@@ -138,8 +139,11 @@ class MainActivity : AppCompatActivity() {
                 '-' ->{
                     if(displaySum.isNotEmpty())
                     {
-                        if(displaySum[displaySum.lastIndex] == '+' || displaySum[displaySum.lastIndex] == '-')
-                            displaySum = displaySum.dropLast(1)
+                        when(displaySum[displaySum.lastIndex]){
+                            '+','-','.' ->{
+                                displaySum = displaySum.dropLast(1)
+                            }
+                        }
                     }
                     displaySum+= tag.toString()[0]
                 }
@@ -151,12 +155,13 @@ class MainActivity : AppCompatActivity() {
             {
                 if(displaySum.last().isDigit())
                 {
-                    var output = "0"//InputParser(displaySum).toString()
+                    val total = InputParser(displaySum)
 
-                    if(output.substringAfterLast('.').toLong() > 0)
-                        outputText.text = output
-                        else
-                    outputText.text = output.substringBeforeLast('.')
+                    //if(total.dec().toString().substringAfterLast('.').toInt() > 0)
+                    if(total != total.toInt().toFloat())// It's used to check if there's a decimal point or not
+                        outputText.text = String.format("%.2f",total)
+                    else
+                        outputText.text = String.format("%.0f",total)
                 }
             }
             else{
@@ -193,15 +198,31 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             else{
-                if(i != '.'){
-                    tempNumber = ""
-                    sumParse.add(i.toString())
+                if(i == '-'){
+                    if(sumParse.count() == 0 || !sumParse[sumParse.lastIndex][0].isDigit())
+                        tempNumber += i.toString()
+                    else
+                    {
+                        tempNumber = ""
+                        sumParse.add(i.toString())
+                    }
                 }
-                else {
-                    tempNumber += i.toString()
+                else
+                {
+                    if(i != '.'){
+                        tempNumber = ""
+                        sumParse.add(i.toString())
+                    }
+                    else {
+                        tempNumber += i.toString()
+                    }
                 }
 
+
             }
+        }
+        if(sumParse.count() < 2){
+            return 0f
         }
         //Parsing array end
 
@@ -212,7 +233,7 @@ class MainActivity : AppCompatActivity() {
         var tempNum : Float = 0f
         var tempOper : Char = ','
 
-        val high = "/*%"
+        val high = "/x%"
         val low = "+-"
 
         for (i in sumParse){
@@ -222,7 +243,7 @@ class MainActivity : AppCompatActivity() {
                 tempOper = ','
                 continue
             }
-            if(i[0].isDigit()){ //i is a number
+            if(i[i.lastIndex].isDigit()){ //i is a number
                 numStack.push(i.toFloat())
             }
             else{   //i is an operator
@@ -230,7 +251,7 @@ class MainActivity : AppCompatActivity() {
                     when( operatorStack.peek()){ //checking if the previous operator has high value using when
                         in low.toCharArray() -> {  //if previous operator is '+ - ' as they have low Precedence
                             when(i[0]){
-                                in high.toCharArray() ->{ //if current operator is '/ * % ' as they have high Precedence
+                                in high.toCharArray() ->{ //if current operator is '/ x % ' as they have high Precedence
                                     tempNum = numStack.pop()
                                     tempOper = i[0]
                                 }
@@ -252,15 +273,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         var result : Float
-        result = numStack[0].toFloat()
+        result = numStack[0]
 
         for(index in 1 until  numStack.count()){
-            result = sumof(result,numStack[index].toFloat(),operatorStack[index -1])
+            result = sumof(result,numStack[index],operatorStack[index -1])
         }
 
 
         return result
-        println("result is $result")
 
     }
 
@@ -271,7 +291,7 @@ class MainActivity : AppCompatActivity() {
             '/' -> {
                 temp = a / b
             }
-            '*' -> {
+            'x' -> {
                 temp = a * b
             }
             '%' -> {
